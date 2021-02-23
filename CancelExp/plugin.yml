@@ -1,0 +1,14 @@
+main: main.Main
+name: CancelExplosion
+version: 0.0.1
+author: khW
+description: Cancel explosion and prevent vandalism of terrain and household
+commands:
+  ac:
+    description: antiexplosion plugin main command
+  ac info:
+    description: get information for plugin
+  ac on:
+    description: state to true
+  ac off:
+    description: state to false
