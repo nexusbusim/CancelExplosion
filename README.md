@@ -8,4 +8,6 @@ Minecraft 1.16.(5) Plugin that cancel block griefing of Explosion
 
 /ac off -> 끄기 ( turn off )
 
+/ac reload -> 설정 파일 리로드 ( reload config file )
+
 this plugin only support korean now
