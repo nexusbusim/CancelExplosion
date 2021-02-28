@@ -24,6 +24,7 @@ public class Main extends JavaPlugin{
 	@Override
 	public void onDisable() {
 		Bukkit.getConsoleSender().sendMessage("폭발 방지 플러그인 종료");
+		reloadConfig();
 	}
 
 }

@@ -2,20 +2,23 @@ package main;
 
 import org.bukkit.command.Command;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
 public class Commands implements CommandExecutor{
 	
 	FileConfiguration config = Main.getPlugin(Main.class).getConfig(); // Main 클래스에서 불러온 getConfig를 사용함.
+	Plugin plugin = Bukkit.getPluginManager().getPlugin("CancelExplosion");
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		
 		if(cmd.getName().equalsIgnoreCase("ac")) {
 			if(args.length == 1) { // 명령어 길이가 1개
-				if(args[0].equalsIgnoreCase("info")) {
+				if(args[0].equalsIgnoreCase("info")) {  // /ac info
 					sender.sendMessage("============\n");
 					sender.sendMessage("버전 : 0.0.1 폭발방지\n");
 					if(config.getBoolean("state")) {
@@ -26,19 +29,27 @@ public class Commands implements CommandExecutor{
 					sender.sendMessage("============\n");
 					
 					return true;
-				} else if (args[0].equalsIgnoreCase("on")) {
+				} else if (args[0].equalsIgnoreCase("on")) { //  /ac on
 						config.set("state", true);
 						Main.getPlugin(Main.class).saveConfig();
 						sender.sendMessage("폭발방지"+ ChatColor.BLUE+ " 켜짐\n");
 						
 						return true;
-				} else if (args[0].equalsIgnoreCase("off")) {
+				} else if (args[0].equalsIgnoreCase("off")) { // /ac off
 						config.set("state", false);
 						Main.getPlugin(Main.class).saveConfig();
 						sender.sendMessage("폭발방지"+ ChatColor.RED + " 꺼짐\n");
 					
 					return true;
-				}else {
+				}else if (args[0].equalsIgnoreCase("reload")) { // /ac reload
+					Bukkit.getPluginManager().disablePlugin(plugin);
+					Bukkit.getPluginManager().enablePlugin(plugin);
+										
+					sender.sendMessage("폭발방지 설정파일 리로딩\n");
+
+					
+					return true;
+				} else {
 					sender.sendMessage("잘못된 커맨드를 입력했습니다.");
 				}
 			} else {
