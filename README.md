@@ -1,7 +1,7 @@
 # CancelExplosion
 Minecraft 1.16.(5) Plugin that cancel block griefing of Explosion
 
-current version : 0.0.2V
+current version : 0.0.3V
 
 /ac info -> 버전 및 상태 ( version and state )   // Permission : ac.info
 
