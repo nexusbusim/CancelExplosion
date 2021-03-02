@@ -11,7 +11,7 @@ public class Main extends JavaPlugin{
 	
 	@Override 
 	public void onEnable() {
-		Bukkit.getConsoleSender().sendMessage("폭발 방지 플러그인 실행, 버전 : 0.0.1");
+		Bukkit.getConsoleSender().sendMessage("폭발 방지 플러그인 실행, 버전 : 0.0.2");
 		this.getCommand("ac").setExecutor(new Commands()); // ac 커맨드의 class를 불러옴.
 		
 		config.addDefault("state", true); // 적용할지를 결정하는 config
@@ -24,7 +24,7 @@ public class Main extends JavaPlugin{
 	@Override
 	public void onDisable() {
 		Bukkit.getConsoleSender().sendMessage("폭발 방지 플러그인 종료");
-		reloadConfig();
+		reloadConfig(); // config 파일 안의 데이터를 적용시켜줌 -> 다음에 새로 켰을떄 적용되도록
 	}
 
 }

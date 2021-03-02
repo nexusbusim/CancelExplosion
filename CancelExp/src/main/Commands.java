@@ -2,6 +2,7 @@ package main;
 
 import org.bukkit.command.Command;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -16,9 +17,13 @@ public class Commands implements CommandExecutor{
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		
-		if(cmd.getName().equalsIgnoreCase("ac")) {
+		Permission acInfo = new Permission("ac.info");
+		Permission acSwitch = new Permission("ac.switch");
+		Permission acReload = new Permission("ac.reload");
+		
+		if(cmd.getName().equalsIgnoreCase("ac")){
 			if(args.length == 1) { // 명령어 길이가 1개
-				if(args[0].equalsIgnoreCase("info")) {  // /ac info
+				if(args[0].equalsIgnoreCase("info") && sender.hasPermission(acInfo)) {  // /ac info
 					sender.sendMessage("============\n");
 					sender.sendMessage("버전 : 0.0.1 폭발방지\n");
 					if(config.getBoolean("state")) {
@@ -29,19 +34,19 @@ public class Commands implements CommandExecutor{
 					sender.sendMessage("============\n");
 					
 					return true;
-				} else if (args[0].equalsIgnoreCase("on")) { //  /ac on
+				} else if (args[0].equalsIgnoreCase("on") && sender.hasPermission(acSwitch)) { //  /ac on
 						config.set("state", true);
 						Main.getPlugin(Main.class).saveConfig();
 						sender.sendMessage("폭발방지"+ ChatColor.BLUE+ " 켜짐\n");
 						
 						return true;
-				} else if (args[0].equalsIgnoreCase("off")) { // /ac off
+				} else if (args[0].equalsIgnoreCase("off") && sender.hasPermission(acSwitch)) { // /ac off
 						config.set("state", false);
 						Main.getPlugin(Main.class).saveConfig();
 						sender.sendMessage("폭발방지"+ ChatColor.RED + " 꺼짐\n");
 					
 					return true;
-				}else if (args[0].equalsIgnoreCase("reload")) { // /ac reload
+				}else if (args[0].equalsIgnoreCase("reload")  && sender.hasPermission(acReload)) { // /ac reload
 					Bukkit.getPluginManager().disablePlugin(plugin);
 					Bukkit.getPluginManager().enablePlugin(plugin);
 										
@@ -50,7 +55,7 @@ public class Commands implements CommandExecutor{
 					
 					return true;
 				} else {
-					sender.sendMessage("잘못된 커맨드를 입력했습니다.");
+					sender.sendMessage("잘못된 커맨드를 입력했거나, 권한이 없습니다.");
 				}
 			} else {
 				sender.sendMessage("잘못된 커맨드를 입력했습니다.");
