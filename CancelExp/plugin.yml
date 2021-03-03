@@ -10,11 +10,11 @@ commands:
     description: get information for plugin
     permission: ac.info
   ac on:
-    description: state to true
+    description: enable CancelExplosion
     permission: ac.switch
   ac off:
-    description: state to false
+    description: disable CancelExplosion
     permission: ac.switch
   ac reload:
-    description: reload config.yml of your plugin
+    description: reload config.yml of CancelExplosion
     permission: ac.reload

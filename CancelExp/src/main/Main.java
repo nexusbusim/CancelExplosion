@@ -7,24 +7,24 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin{
 	
-	FileConfiguration config = getConfig(); // config 파일 설정
+	FileConfiguration config = getConfig(); // Gets the config
 	
 	@Override 
 	public void onEnable() {
-		Bukkit.getConsoleSender().sendMessage("폭발 방지 플러그인 실행, 버전 : 0.0.2");
-		this.getCommand("ac").setExecutor(new Commands()); // ac 커맨드의 class를 불러옴.
+		Bukkit.getConsoleSender().sendMessage("CancelExplosion running, version: 0.0.2");
+		this.getCommand("ac").setExecutor(new Commands()); // Call class of ac command.
 		
-		config.addDefault("state", true); // 적용할지를 결정하는 config
-		config.options().copyDefaults(true); // config 저장
+		config.addDefault("state", true); // Sets the default value of state to 'true'
+		config.options().copyDefaults(true); // Saves config
 		saveConfig();
 		
-		getServer().getPluginManager().registerEvents(new ExpListener(), this); // 폭발 관련 리스너 추가해주기.
+		getServer().getPluginManager().registerEvents(new ExpListener(), this); // Adding explosion listener, to listen for explosions.
 	}
 	
 	@Override
 	public void onDisable() {
-		Bukkit.getConsoleSender().sendMessage("폭발 방지 플러그인 종료");
-		reloadConfig(); // config 파일 안의 데이터를 적용시켜줌 -> 다음에 새로 켰을떄 적용되도록
+		Bukkit.getConsoleSender().sendMessage("CancelExplosion shutting down");
+		reloadConfig(); // Saving data to config file, that will be applied for next time
 	}
 
 }

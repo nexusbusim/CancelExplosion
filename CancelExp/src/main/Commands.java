@@ -11,7 +11,7 @@ import org.bukkit.ChatColor;
 
 public class Commands implements CommandExecutor{
 	
-	FileConfiguration config = Main.getPlugin(Main.class).getConfig(); // Main 클래스에서 불러온 getConfig를 사용함.
+	FileConfiguration config = Main.getPlugin(Main.class).getConfig(); // Loading config from the Main class.
 	Plugin plugin = Bukkit.getPluginManager().getPlugin("CancelExplosion");
 	
 	@Override
@@ -22,14 +22,14 @@ public class Commands implements CommandExecutor{
 		Permission acReload = new Permission("ac.reload");
 		
 		if(cmd.getName().equalsIgnoreCase("ac")){
-			if(args.length == 1) { // 명령어 길이가 1개
+			if(args.length == 1) { // Check if only 1 parameter is given
 				if(args[0].equalsIgnoreCase("info") && sender.hasPermission(acInfo)) {  // /ac info
 					sender.sendMessage("============\n");
-					sender.sendMessage("버전 : 0.0.1 폭발방지\n");
+					sender.sendMessage("CancelExplosion, Version 0.0.1\n");
 					if(config.getBoolean("state")) {
-						sender.sendMessage("상태 :" + ChatColor.BLUE + " 켜짐\n"); // 켜짐 == BLUE
+						sender.sendMessage("Status: " + ChatColor.BLUE + " ON\n"); // ON == BLUE
 					} else {
-						sender.sendMessage("상태 :" + ChatColor.RED + " 꺼짐\n"); // 꺼짐 == RED
+						sender.sendMessage("Status: " + ChatColor.RED + " OFF\n"); // OFF == RED
 					}
 					sender.sendMessage("============\n");
 					
@@ -37,28 +37,28 @@ public class Commands implements CommandExecutor{
 				} else if (args[0].equalsIgnoreCase("on") && sender.hasPermission(acSwitch)) { //  /ac on
 						config.set("state", true);
 						Main.getPlugin(Main.class).saveConfig();
-						sender.sendMessage("폭발방지"+ ChatColor.BLUE+ " 켜짐\n");
+						sender.sendMessage("CancelExplosion turned "+ ChatColor.BLUE+ " ON\n");
 						
 						return true;
 				} else if (args[0].equalsIgnoreCase("off") && sender.hasPermission(acSwitch)) { // /ac off
 						config.set("state", false);
 						Main.getPlugin(Main.class).saveConfig();
-						sender.sendMessage("폭발방지"+ ChatColor.RED + " 꺼짐\n");
+						sender.sendMessage("CancelExplosion turned "+ ChatColor.RED + " OFF\n");
 					
 					return true;
 				}else if (args[0].equalsIgnoreCase("reload")  && sender.hasPermission(acReload)) { // /ac reload
 					Bukkit.getPluginManager().disablePlugin(plugin);
 					Bukkit.getPluginManager().enablePlugin(plugin);
 										
-					sender.sendMessage("폭발방지 설정파일 리로딩\n");
+					sender.sendMessage("Reload CancelExplosion config\n");
 
 					
 					return true;
 				} else {
-					sender.sendMessage("잘못된 커맨드를 입력했거나, 권한이 없습니다.");
+					sender.sendMessage("You either entered the wrong command or your don't have enough permissions!");
 				}
 			} else {
-				sender.sendMessage("잘못된 커맨드를 입력했습니다.");
+				sender.sendMessage("You entered an incorrect command!");
 			}
 		}
 		
