@@ -1,7 +1,7 @@
-main: main.Main
+main: com.khwoo.Main
 name: CancelExplosion
-version: 0.0.3
-author: khW
+version: 0.0.4
+author: khWoo
 description: Cancel explosion and prevent vandalism of terrain and household
 commands:
   ac:
