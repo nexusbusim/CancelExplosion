@@ -12,4 +12,4 @@ current version : 0.0.3V
 /ac reload -> 설정 파일 리로드 ( Reloads the config of this plugin ) // Permission : ac.reload
 
 this plugin only support korean now   
-0.0.4v might be update for multi-language support
+version 0.0.5 might be update for multi-language support
