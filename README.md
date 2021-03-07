@@ -17,4 +17,3 @@ langauge support : ko, en
 you can change setting on config.yml
 
 this plugin support korean and english 
-version 0.0.5 might be update for multi-language support
