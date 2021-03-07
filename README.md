@@ -13,8 +13,8 @@ current version : 0.0.3V
 
 IF YOU UPDATE YOUR PLUGIN, DELETE YOUR CONFIG FILE FIRST!!!
 
-langauge support : ko, en
+langauge support : ko, en        
 you can change setting on config.yml
 
-this plugin only support korean now   
+this plugin support korean and english 
 version 0.0.5 might be update for multi-language support
