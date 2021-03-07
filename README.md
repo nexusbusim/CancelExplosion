@@ -11,5 +11,10 @@ current version : 0.0.3V
 
 /ac reload -> 설정 파일 리로드 ( Reloads the config of this plugin ) // Permission : ac.reload
 
+IF YOU UPDATE YOUR PLUGIN, DELETE YOUR CONFIG FILE FIRST!!!
+
+langauge support : ko, en
+you can change setting on config.yml
+
 this plugin only support korean now   
 version 0.0.5 might be update for multi-language support
