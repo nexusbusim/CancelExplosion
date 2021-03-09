@@ -9,7 +9,7 @@ Minecraft 1.16.(5) Plugin that cancel block griefing of Explosion
 
 /ac reload -> 설정 파일 리로드 ( Reloads the config of this plugin ) // Permission : ac.reload
 
-IF YOU UPDATE YOUR PLUGIN, DELETE YOUR CONFIG FILE FIRST!!!
+IF YOU UPDATE YOUR PLUGIN, DELETE YOUR ORIGINAL CONFIG FILE FIRST!!!
 
 langauge support : ko, en        
 you can change setting on config.yml
