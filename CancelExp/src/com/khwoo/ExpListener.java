@@ -8,7 +8,7 @@ import org.bukkit.event.EventHandler;
 
 
 public class ExpListener implements Listener{
-	FileConfiguration config = Main.getPlugin(Main.class).getConfig();
+	FileConfiguration config = CancelExplosion.getPlugin(CancelExplosion.class).getConfig();
 
 	
 	@EventHandler

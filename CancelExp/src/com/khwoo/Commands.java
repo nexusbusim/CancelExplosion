@@ -10,7 +10,7 @@ import org.bukkit.Bukkit;
 
 public class Commands implements CommandExecutor{
 	
-	FileConfiguration config = Main.getPlugin(Main.class).getConfig(); // get config from Main class
+	FileConfiguration config = CancelExplosion.getPlugin(CancelExplosion.class).getConfig(); // get config from Main class
 	Plugin plugin = Bukkit.getPluginManager().getPlugin("CancelExplosion");
 
 	
@@ -20,7 +20,7 @@ public class Commands implements CommandExecutor{
 		String language = config.getString("lang"); // get language information
 		
 		if(cmd.getName().equalsIgnoreCase("ac")){
-			if(args.length == 1) { 
+			if(args.length == 1) { // command with 1 argument
 				switch (args[0]) {
 					case "info": // ac info | show information 
 						if(sender.hasPermission(new Permission("ac.info"))) {
@@ -40,7 +40,7 @@ public class Commands implements CommandExecutor{
 					case "on": // ac on | enable plugin
 						if(sender.hasPermission(new Permission("ac.switch"))) {
 							config.set("state", true);
-							Main.getPlugin(Main.class).saveConfig();
+							CancelExplosion.getPlugin(CancelExplosion.class).saveConfig();
 							sender.sendMessage(config.getString(language.concat(".statusOn"))); // switch ON
 							return true;
 						}
@@ -49,7 +49,7 @@ public class Commands implements CommandExecutor{
 					case "off": // ac off | disable plugin
 						if(sender.hasPermission(new Permission("ac.switch"))) {
 							config.set("state", false);
-							Main.getPlugin(Main.class).saveConfig();
+							CancelExplosion.getPlugin(CancelExplosion.class).saveConfig();
 							sender.sendMessage(config.getString(language.concat(".statusOff"))); // switch OFF
 							return true;
 						}
@@ -65,7 +65,7 @@ public class Commands implements CommandExecutor{
 						break;
 						
 					default:
-						sender.sendMessage("YOU DONT HAVE PERMISSION FOR THIS");
+						sender.sendMessage("WRONG COMMAND");
 						break;
 				}
 			} else {

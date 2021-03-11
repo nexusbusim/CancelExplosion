@@ -1,4 +1,4 @@
-main: com.khwoo.Main
+main: com.khwoo.CancelExplosion
 name: CancelExplosion
 version: 0.0.5
 author: khWoo
